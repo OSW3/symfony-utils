@@ -1,6 +1,6 @@
 {
-    "name": "osw3/symfony-trait",
-    "description": "Add trait to your app pages.",
+    "name": "osw3/symfony-utils",
+    "description": "Add utils to your app pages.",
     "homepage": "https://osw3.net",
     "type": "symfony-bundle",
     "license": "MIT",
@@ -9,7 +9,7 @@
     "authors": [
 		{
 			"name": "Project Contributors",
-			"homepage": "https://github.com/osw3/symfony-trait/graphs/contributors"
+			"homepage": "https://github.com/osw3/symfony-utils/graphs/contributors"
 		}
     ],
     "autoload": {
