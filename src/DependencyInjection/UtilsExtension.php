@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 
-class TraitExtension extends Extension implements PrependExtensionInterface 
+class UtilsExtension extends Extension implements PrependExtensionInterface 
 {
 	/**
 	 * Bundle configuration Injection
@@ -53,10 +53,10 @@ class TraitExtension extends Extension implements PrependExtensionInterface
         // Extend Twig configuration
         // --
 
-        // $twigConfig = [];
+        $twigConfig = [];
 		// $this->extendsTwigConfig($twigConfig, Path::join(__DIR__, "/../../", "templates"), ucfirst(Configuration::NAME));
 
-        // $container->prependExtensionConfig('twig', $twigConfig);
+        $container->prependExtensionConfig('twig', $twigConfig);
     }
 
 	/**
