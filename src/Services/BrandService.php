@@ -12,11 +12,11 @@ namespace OSW3\Utils\Services;
  * 
  * 
  * 
- * 2. Import the 'config/services/menus.yaml' in the 'config/services.yaml'
+ * 2. Import the 'config/services/brand.yaml' in the 'config/services.yaml'
  * --
  * 
  * imports:
- *    - { resource: 'services/menus.yaml' }
+ *    - { resource: 'services/brand.yaml' }
  * 
  * 
  * 
@@ -25,11 +25,9 @@ namespace OSW3\Utils\Services;
  * 
  * twig:
  *    globals:
- *        menus: '@OSW3\Utils\Services\MenuService'
+ *        brand: '@OSW3\Utils\Services\BrandService'
  */
 
-use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class BrandService 
@@ -37,16 +35,13 @@ class BrandService
     private array $options = [];
 
     public function __construct(
-        private LocaleService $localeService,
         private ParameterBagInterface $params,
-        private TranslatorInterface $translator,
-        private UrlGeneratorInterface $urlGenerator
     ){
-        $this->options = $this->params->get('brand');
+        // $this->options = $this->params->get('brand');
     }
     
     public function getName(): ?string
     {
-        return $this->options['name'] ?? null;
+        return $this->params->get('brand.name') ?? null;
     }
 }
