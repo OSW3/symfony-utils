@@ -3,6 +3,7 @@ namespace OSW3\Utils\Services;
 /**
  * 1. Build menu settings
  * --
+ * Open the 'config/services/menus.yaml' and add the menu tree
  * 
  * parameters:
  *    menus:
@@ -11,7 +12,16 @@ namespace OSW3\Utils\Services;
  *        ]
  * 
  * 
- * 2. Provide the MenuService to Twig
+ * 
+ * 2. Import the 'config/services/menus.yaml' in the 'config/services.yaml'
+ * --
+ * 
+ * imports:
+ *    - { resource: 'services/menus.yaml' }
+ * 
+ * 
+ * 
+ * 3. Provide the MenuService to Twig config 'config/packages/twig.yaml'
  * --
  * 
  * twig:
