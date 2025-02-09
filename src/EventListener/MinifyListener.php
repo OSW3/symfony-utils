@@ -3,9 +3,9 @@ namespace OSW3\Utils\EventListener;
 
 // use Symfony\Component\Routing\Router;
 use Symfony\Component\HttpFoundation\Response;
+use OSW3\Utils\DependencyInjection\Configuration;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
-use OSW3\UtilsBundle\DependencyInjection\Configuration;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
@@ -31,15 +31,14 @@ class MinifyListener
         private KernelInterface $kernel
     ){
         $this->environment = $kernel->getEnvironment();
-        
-        // $this->config = $this->container->getParameter(Configuration::NAME)['minify'];
+        $this->config = $container->getParameter(Configuration::NAME)['minify'];
     }
 
     #[AsEventListener]
     public function proceed(ResponseEvent $event): void
     {
-        // dd($this->config['if']);
-        // if ($this->environment !== $this->config['if']) return;
+        // dd($this->config['env']);
+        if ($this->environment !== $this->config['env']) return;
         
         $content = preg_replace(
             array('/<!--(.*)-->/Uis',"/[[:blank:]]+/"),
