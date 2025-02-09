@@ -3,7 +3,7 @@ namespace OSW3\Utils\Helper;
 
 class GraphQL
 {
-    public function simplify(array $data, string $key = null): array
+    public function simplify(array $data, string|null $key = null): array
     {
         $reduced = $this->reduce($data);
 
@@ -14,7 +14,7 @@ class GraphQL
         return $reduced['data'][$key];
     }
 
-    private function reduce(array $data, string $key = null)
+    private function reduce(array $data, string|null $key = null)
     {
         if ($key !== null && isset($data[$key])) {
             return $this->reduce($data[$key]);
