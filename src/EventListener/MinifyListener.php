@@ -6,17 +6,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use OSW3\UtilsBundle\DependencyInjection\Configuration;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 
 class MinifyListener
 {
-    /**
-     * Container Interface
-     *
-     * @var ContainerInterface
-     */
-    protected $container;
 
     /**
      * Bundle Configuration
@@ -30,9 +25,11 @@ class MinifyListener
      */
     private $environment;
 
-    public function __construct(ContainerInterface $container, KernelInterface $kernel)
-    {
-        $this->container = $container;
+    public function __construct(
+        #[Autowire(service: 'service_container')] 
+        private ContainerInterface $container,
+        private KernelInterface $kernel
+    ){
         $this->environment = $kernel->getEnvironment();
         
         // $this->config = $this->container->getParameter(Configuration::NAME)['minify'];
